@@ -26,10 +26,37 @@
   input[type="text"] {
     height: 50px;
     width: 200px;
-    background:wheat
-    center;
+    background:wheat;
+    font-weight: bold;
+    border: none;
+    text-align: center;
   }
 
+ .Search-Button {
+    height: 50px;
+    width: 200px;
+    background:blue;
+    font-weight: bold;
+    border: none;
+    text-align: center;
+    padding: 8em;
+  }
+
+  .Output-Button {
+    height: 50px;
+    width: 200px;
+    background:rgb(164, 164, 179);
+    font-weight: bold;
+    border: none;
+    text-align: center;
+    padding: none;
+  }
+
+  /* p {
+    text-align: center;
+    font-weight: bold;
+  }
+ */
 
   
   /**

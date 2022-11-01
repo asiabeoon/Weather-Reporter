@@ -3,74 +3,66 @@
     
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/style.css" />
-  
+    
     <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
      crossorigin="anonymous"></script> -->
 </head>
 
 <!-- Main Header -->
-<body class="min-100-vh flex-column">
-    <header class="p-5 text-center text-white bg-primary">
+<body class="jumbotron jumbotron-fluid text-container">
+        <!-- "flex-colomn min-100-vh"> -->
+    <header class="p-5 text-center justify-space-between text-white bg-primary ">
         <h1>Weather Dashboard</h1>
     </header> 
 
-    <main class="flex-row justify-space-between">
-<!-- Section for user Input  -->
-      <section class="col-12 col-sm-12 col-md-4 float-left">
 
-        <header class="card-header text-center">
-            <h3 class="text-black">
-              Search for City
-            </h3>
-            <div id="User-Input" class="input">
-                <input type="text" id="userInput" placeholder="San Diego"/>
-                <input type ="submit" value ="Submit">
-              </div>
-        </header>
+    <!--Current City Output-->
 
-        <!-- <table class="card-body table mx-auto my-4">
-            <th>
-              <p class="my-4">User Search History</p>
-            </th>
-            <tbody id="city-table" class="mx-auto text-right"></tbody>
-          </table> -->
-          <div class="card history">
-            <ul class="card-header text-uppercase">User Search History
-                <li></li>
-            </ul>
-          </div>
-        </div>
-    
-        <div class="col-12 col-sm-12 col-md-8 float-right">
-          <div>
-            <h2 class="subtitle text-uppercase bg-light">Current Weather</h2>
-            <div class="city"></div>
-          </div>
-    
-          <div>
-            <h2 class="subtitle text-uppercase bg-light">5 Day forecast</h2>
-            <div class="five-day"></div>
-          </div>
-        </div>
-      </section>
+<main class="container-fluid" style=" max-width:1400px">
+<div class="row">
+    <aside class="col-3 pb-3"> 
+        <h3 class="text-black text-center">
+            Search for City
+          </h3>
+          <form id="search-form" class="form">
+            <div class="form-inline form-group">
 
-    <!-- <a href="http://jquery.com/">jQuery</a> -->
+                <div class="input-group">
+                    <input class="form-input weather-search" type="text" id="userInput" placeholder="San Diego"/>
+                    <div class="input-group-append">
+                        <button id="Search-Button" class="btn btn-primary" id="searchBtn" type="submit">Search</button>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+          </form>
+          <div id="history" class="list-group"></div>
+    </aside>
+    <div class="col-9 pb-3">
+        <section id="today" class="mt-3"></section>
+        <section id="forecast" class="mt-3"></section>
+    </div>
+</div>
+</main>  
+
+
+<!-- <jQuery links -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-     
+<!-- Link to Script page -->
     <script src="./assets/script.js"></script>
-</main>  
+
 </body>
 </html>
 
