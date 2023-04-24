@@ -22,35 +22,60 @@
     margin-bottom: 0.7em;
     width: 400px;
   }
+header {
+  background-color:rgb(71, 71, 235) ;
+}
+  #search-form {
+  
+  }
 
-  input[type="text"] {
-    height: 50px;
-    width: 200px;
-    background:wheat;
+  #todaysForecast {
+
+    border-style: solid;
+    text-align: left;
+  }
+
+  #today-is {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  #forecast {
+
+  }
+
+  ul{
+  font-size: 18px;
+  font-weight: bold;
+  } 
+
+#userInput {
+    height: 40px;
+    width: 225px;
+    background:white;
+    font-weight: bold;
+    border: none;
+    text-align: left;
+  }
+
+  #searchBtn {
+    height: 40px;
+    width: 225px; 
+    background:rgb(71, 71, 235);
     font-weight: bold;
     border: none;
     text-align: center;
   }
 
- .Search-Button {
-    height: 50px;
-    width: 200px;
-    background:blue;
-    font-weight: bold;
-    border: none;
-    text-align: center;
-    padding: 8em;
-  }
-
-  .Output-Button {
-    height: 50px;
-    width: 200px;
+  #searched-cityBtn {
+    height: 40px;
+    width: 225px;
     background:rgb(164, 164, 179);
     font-weight: bold;
     border: none;
     text-align: center;
-    padding: none;
-  }
+    padding-top: 2%;  }
+
 
   /* p {
     text-align: center;
@@ -76,5 +101,27 @@
   }
   @media (min-width: 992px) {
   
+  h3 {
+    text-align: center;
+  } 
   }
+  #fiveDay {
+  color: white;
+  display: flex;
+  background-color:white;
+  align-content: center;
+  justify-content: center;
+ 
+}
+
+
+#fiveDay div {
+  background-color:rgb(34, 34, 87);
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+  padding: 10px;
+  /* text-align: left; */
+}
+  
   

@@ -1,28 +1,41 @@
+// Getting element where date will be displayed
+// var todayEl = document.getElementById("today-is")
+
 //Setting global Variables for fetch
 var myApiKey = "a034c363e29b7ec6ac1cc12e21685483"
 var cityName= "Philadelphia"
 //&units=imperial turns to imperial measurments
 var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myApiKey}&units=imperial`
 
-var todayEl = document.getElementById("today")
-//me
+//Getting element where todays forecast will be displayed
 var forecastEL = document.getElementById("forecast")
+var todayEL = document.getElementById("today-is")
+
+// Displaying current date in the today-is Section
+var todayIs = dayjs();
+	$('#today-is').text(todayIs.format('MMM D, YYYY')); 
+
+//*Attempt to display City name next to todayIs/Current date 
+	// var currentCity = document.createElement("h1")
+	// currentCity.textContent = "City" + data.cityName
+	// forecastEL.appendChild(todayEl)
 
 // Fetch to get and display the current conditions(temperature, wind speed,humidity)  from Open Weather Maps
-
 function weatherFetch() { 
 
 fetch(url)          
 .then(response => response.json())
 .then(function (data){
 // console.log(data, "hey!")
-	todayEl.textContent = "Temperature " + data.main.temp
-	var wind = document.createElement("li")
-	wind.textContent = "Wind " + data.wind.speed
-	todayEl.appendChild(wind)
-	var humidity =document.createElement("li")
-	humidity.textContent = "Humidity " + data.main.humidity
-	todayEl.appendChild(humidity)
+	var temp = document.createElement("ul")
+	temp.textContent = "Temp: " + data.main.temp + " ° F"
+	forecastEL.appendChild(temp)
+	var wind = document.createElement("ul")
+	wind.textContent = "Wind: " + data.wind.speed + " MPH"
+	forecastEL.appendChild(wind)
+	var humidity =document.createElement("ul")
+	humidity.textContent = "Humidity: " + data.main.humidity + " %"
+	forecastEL.appendChild(humidity)
  //fiveDay(data)	
 });
 }
@@ -36,7 +49,24 @@ weatherFetch()
 
 var fiveDayUrl = `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=${myApiKey}&units=imperial`
 
+// var fiveDayBox =document.getElementById('fiveDay')
+// function weatherFetch() { 
 
+// 	fetch(url)          
+// 	.then(response => response.json())
+// 	.then(function (data){
+// 	// console.log(data, "hey!")
+// 		todayEl.textContent = "Temperature " + data.main.temp
+// 		var wind = document.createElement("li")
+// 		wind.textContent = "Wind " + data.wind.speed
+// 		todayEl.appendChild(wind)
+// 		var humidity =document.createElement("li")
+// 		humidity.textContent = "Humidity " + data.main.humidity
+// 		todayEl.appendChild(humidity)
+// 	 //fiveDay(data)	
+// 	});
+// 	}
+// 	weatherFetch()
 
 //Trigger button on click
 // var input = document.getElementById("userInput").value;
