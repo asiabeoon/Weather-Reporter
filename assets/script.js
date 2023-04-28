@@ -1,32 +1,26 @@
-// Getting element where date will be displayed
-// var todayEl = document.getElementById("today-is")
-
 //Setting global Variables for fetch
 var myApiKey = "a034c363e29b7ec6ac1cc12e21685483"
-var cityName= "Philadelphia"
+var cityName= ""
+var cityInput = document.querySelector("#userInput")
+console.log(cityInput.value)
 //&units=imperial turns to imperial measurments
-var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myApiKey}&units=imperial`
+
 
 //Getting element where todays forecast will be displayed
-var forecastEL = document.getElementById("forecast")
-var todayEL = document.getElementById("today-is")
+var forecastEL = document.getElementById("todaysForecast")
 
-// Displaying current date in the today-is Section
-var todayIs = dayjs();
-	$('#today-is').text(todayIs.format('MMM D, YYYY')); 
-
-//*Attempt to display City name next to todayIs/Current date 
-	// var currentCity = document.createElement("h1")
-	// currentCity.textContent = "City" + data.cityName
-	// forecastEL.appendChild(todayEl)
 
 // Fetch to get and display the current conditions(temperature, wind speed,humidity)  from Open Weather Maps
-function weatherFetch() { 
+function weatherFetch(cityName) { 
+	var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myApiKey}&units=imperial`
 
 fetch(url)          
 .then(response => response.json())
 .then(function (data){
 // console.log(data, "hey!")
+	var heading =document.createElement ('h2')
+	heading.textContent=` ${data.name} ${dayjs().format("M/D/YYYY")}` 
+	forecastEL.appendChild(heading)
 	var temp = document.createElement("ul")
 	temp.textContent = "Temp: " + data.main.temp + " ° F"
 	forecastEL.appendChild(temp)
@@ -36,97 +30,80 @@ fetch(url)
 	var humidity =document.createElement("ul")
 	humidity.textContent = "Humidity: " + data.main.humidity + " %"
 	forecastEL.appendChild(humidity)
- //fiveDay(data)	
+	addToHistory(data.name)
+	
 });
 }
-weatherFetch()
 
-//TO DO call function 
-// get data from api for each day 
-// create an element that includes date temp etc, and icon
 
-//me
+var searched = [];
+var searchBtn = document.querySelector('#searchBtn');
+var searchResults = document.querySelector('#history');
+// var cityInput = document.querySelector("#userInput")
 
-var fiveDayUrl = `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=${myApiKey}&units=imperial`
+function displayHistory (){
+searchResults.innerHTML= "";
+for (var i = searched.length-1; i>=0 ; i--){
+	var button =document.createElement('button')
+	button.setAttribute("type", "button");
+	button.setAttribute('class', "history-btn");
+	button.setAttribute('data-search', searched[i]);
+	button.textContent=searched[i];
+	searchResults.append(button);
+}
+}
+
+function addToHistory (search){
+if (searched.indexOf(searched) !== -1) {
+	return
+}
+searched.push (search);
+localStorage.setItem ("cities", JSON.stringify(searched))
+displayHistory();
+}
+
+function loadHistory () {
+	var history = localStorage.getItem('cities');
+	if (history){
+		searched=JSON.parse(history)
+	}
+	displayHistory();
+}
+// Makes history appear
+loadHistory();
+
+// ***Trigger button on click get value from city and add to fetch
+searchBtn.addEventListener('click' , function(event){
+	event.preventDefault();
+	var city = cityInput.value
+	console.log (city)
+	weatherFetch(city);
+  // save to localstorage
+});		
+ 
+var lat= 41.85;
+var lon= -87.65;
+var fiveDayApi = "e007908c4d4214ff602037dcfe521a1e"
+var fiveDayUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${fiveDayApi}&units=imperial`
+
 
 // var fiveDayBox =document.getElementById('fiveDay')
 // function weatherFetch() { 
 
-// 	fetch(url)          
-// 	.then(response => response.json())
-// 	.then(function (data){
-// 	// console.log(data, "hey!")
-// 		todayEl.textContent = "Temperature " + data.main.temp
-// 		var wind = document.createElement("li")
-// 		wind.textContent = "Wind " + data.wind.speed
-// 		todayEl.appendChild(wind)
-// 		var humidity =document.createElement("li")
-// 		humidity.textContent = "Humidity " + data.main.humidity
-// 		todayEl.appendChild(humidity)
-// 	 //fiveDay(data)	
-// 	});
-// 	}
-// 	weatherFetch()
-
-//Trigger button on click
-// var input = document.getElementById("userInput").value;
-// input.addEventListener("keypress", function(event) {
-
-// 	if (cityName.key === "Enter") {
-// 	  event.preventDefault(cityName);
-// 	  document.getElementById("searchBtn").click();
-// 	}
-//   });
-
-
-// //Function to Show history after a user has searched for a city
-// var searchHistory = [];
-// var searchHistoryContainer = document.querySelector("#history")
-
-// // Function to update history in local storage then updates displayed history.
-// function appendToHistory(search) {
-
-// // If there is no search term return the function
-// 	if (searchHistory.indexOf(search) !== -1) {
-// 	  return;
-// 	}
-// 	searchHistory.push(search);
-  
-// 	localStorage.setItem('search-history', JSON.stringify(searchHistory));
-// 	showHistory();
-//   }
-  
-//   // Function to get search history from local storage
-//   function initSearchHistory() {
-// 	var storedHistory = localStorage.getItem('search-history');
-// 	if (storedHistory) {
-// 	  searchHistory = JSON.parse(storedHistory);
-// 	}
-// 	showHistory();
-//   }
-  
-// // Function to Show the history as a button
-// function showHistory () {
-// 	searchHistoryContainer.innerHTML="";
-// 	for (var i =searchHistory.length-1; i>=0; i--){
-// 		var btn = document.createElement("button");
-// 		btn.setAttribute("type", "button");
-// 		btn.classList.add("history-btn", "btn-history");
-// 		btn.setAttribute("data-search", searchHistory[i]);
-// 		btn.textContent=searchHistory[i];
-// 		searchHistoryContainer.append(btn)
-// 	}
-// }
-
-
-// $ document.getElementById("searchBtn"), ".searchHistory", function(e) {
-//     e.preventDefault();
-//     var search = $(this).text();
-//     doSearch(search);
+	fetch(fiveDayUrl)          
+	.then(response => response.json())
+	.then(function (data){
+	console.log(data, "hey!")
+		// todayEl.textContent = "Temperature " + data.main.temp
+		// var wind = document.createElement("li")
+		// wind.textContent = "Wind " + data.wind.speed
+		// todayEl.appendChild(wind)
+		// var humidity =document.createElement("li")
+		// humidity.textContent = "Humidity " + data.main.humidity
+		// todayEl.appendChild(humidity)
+	 //fiveDay(data)	
+	});
+	
 
 
 
-	//fetch('https://api.openweathermap.org/data/2.5/weather?q='+userInput.value+'&appid=a034c363e29b7ec6ac1cc12e21685483&contentType=json')          
-	//.then(response => response.json())
-	//.then(data => console.log(data));
-   
