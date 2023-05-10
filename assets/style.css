@@ -78,6 +78,15 @@ header {
     text-align: center;
   }
 
+  #clearBtn {
+    height: 40px;
+    width: 225px; 
+    background:rgb(71, 71, 235);
+    font-weight: bold;
+    border: none;
+    text-align: center;
+  }
+
   #searched-cityBtn {
     height: 40px;
     width: 225px;

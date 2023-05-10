@@ -21,7 +21,8 @@ fetch(url)
 	var heading =document.createElement ('h2')
 	heading.textContent=` ${data.name} ${dayjs().format("M/D/YYYY")}` 
 	forecastEL.appendChild(heading)
-
+	
+// to find the information look in the console log after a search for city is performed
 // List elements for output
 
 	var temp = document.createElement("ul")
@@ -87,7 +88,25 @@ searchBtn.addEventListener('click' , function(event){
 	weatherFetch(city);
   // save to localstorage
 });		
- 
+
+// grab button by creating variable
+var clearButton = document.getElementById('clearBtn')
+//var clearButton = document.querySelector('#clearBtn')
+clearButton.addEventListener('click', function() {
+	deleteItems();
+})
+
+// modify button
+// <button onclick="deleteItems()">Delete items</button>
+
+// append button
+function deleteItems() {
+	//sessionStorage.clear();
+	localStorage.removeItem('cities');
+	// localStorage.clear();
+  }
+// call buttonn
+
 // var lat= 41.85;
 // var lon= -87.65;
 // var fiveDayApi = "e007908c4d4214ff602037dcfe521a1e"
@@ -104,30 +123,79 @@ function fiveDayFetch(lat,lon) {
 	.then(function (data){
 	// console.log(data, "hey!")
 
-	var  fiveDayContainer = document.querySelector('#fiveDay')
+	console.log("Forcast: ", data);
 	// create a for loop we use 8 because the date changes every 3 hours thus 8 intervals
 	// dt equals data 
+	var  fiveDayContainer = document.querySelector('#fiveDay')
+
+	// Temp data container for filtered forecast data
+	var filteredForcast = [];
+
+	// Iterate through the entier list that is returned with all times for the forecast
+	for(var i = 0; i < data.list.length; i++) {
+		var timeStamp = data.list[i].dt_txt.split(" ")[1];
+	//	console.log("time stamp: ", timeStamp);
+
+		// TEST/SELECT for a certian time of day
+		if(timeStamp === "15:00:00") {   // in military time (does need to match a STRING)
+			filteredForcast.push(data.list[i])
+		}
+	}
+
+	console.log("Filtered Forecast: ", filteredForcast);
+
+
+	for(var i = 0; i < filteredForcast.length; i++) {
+		console.log
+		var date = filteredForcast[i].dt_txt.split(" ")[0];
+
+		fiveDayContainer.innerHTML+=`
+			<div> 
+				<h4 id="dateTwo">${date}</h4>
+				<img src="http://openweathermap.org/img/w/${filteredForcast[i].weather[0].icon}.png" />
+				<ul>
+				Temp: ${filteredForcast[i].main.temp}° F
+				Wind: ${filteredForcast[i].wind.speed} mph
+				Humidity: ${filteredForcast[i].main.humidity}%
+	
+				</ul>
+			</div>
+			`
+	}
+
+
+/*
 	for (var i=0; i<data.list.length;i+=8) {
 		console.log(data.list[i])
 		var date = data.list[i].dt_txt.split(" ")[0] ;
+*/
 
-	// to find the information look in the console log after a search for city is performed
-		fiveDayContainer.innerHTML+=`
+	//*** */ const iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+
+	// const iconImg = document.createElement('img');
+	// iconImg.src = iconUrl;
+	// document.body.appendChild(iconImg);
+ 
+	/*
+	fiveDayContainer.innerHTML+=`
 		<div> 
         	<h4 id="dateTwo">${date}</h4>
+			<img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png" />
         	<ul>
             Temp: ${data.list[i].main.temp}
             Wind: ${data.list[i].wind.speed}
-            Humidity: ${data.list[i].main.humidity}
+            Humidity: ${data.list[i].main.humidity}%
 
         	</ul>
     	</div>
 		`
 	}
+	*/
 	
 	});
 }
-	
+
+
 
 
 
