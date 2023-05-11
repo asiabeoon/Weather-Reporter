@@ -8,6 +8,7 @@ console.log(cityInput.value)
 
 //Getting element where todays forecast will be displayed
 var forecastEL = document.getElementById("todaysForecast")
+var imageIcon = document.getElementById("image-icon")
 var tempOutputEl = document.getElementById("tempOutput")
 
 // Fetch to get and display the current conditions(temperature, wind speed,humidity)  from Open Weather Maps
@@ -21,9 +22,18 @@ fetch(url)
 	var heading =document.createElement ('h2')
 	heading.textContent=` ${data.name} ${dayjs().format("M/D/YYYY")}` 
 	forecastEL.appendChild(heading)
-	
-// to find the information look in the console log after a search for city is performed
-// List elements for output
+
+
+// var iconAPI = `http://openweathermap.org/img/w/${list.data.weather[0].icon}.png`	
+// imageIcon .innerHTML+=`
+// <img src="http://openweathermap.org/img/w/${iconforecast[i].weather[0].icon}.png" />`
+// }
+
+// *************Working on putting image in the todays forecast div = var imageIcon = document.getElementById("image-icon")
+
+// imageIconURL =`
+// <img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png" />`
+// imageIcon.appendChild(icon)
 
 	var temp = document.createElement("ul")
 	temp.textContent = "Temp: " + data.main.temp + " ° F"
@@ -40,6 +50,7 @@ console.log(data.coord)
 var lon = data.coord.lon;
 var lat = data.coord.lat;
 fiveDayFetch(lat, lon);
+
 });
 }
 

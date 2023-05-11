@@ -131,18 +131,21 @@ header {
   background-color:white;
   align-content: center;
   justify-content: center;
- 
+  margin-left: 30%;
+  margin-top: 2px;
 }
+ 
 
 
 #fiveDay div {
   background-color:rgb(34, 34, 87);
   align-items: center;
+  margin-left: 2px;
+  margin-top: 2px;
   margin: 10px;
   width: 100%;
   padding: 10px;
   float: right;
   /* text-align: left; */
 }
-  
-  
+
