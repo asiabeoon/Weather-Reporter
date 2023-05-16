@@ -3,32 +3,16 @@ A 5 Day Weather Forecasting tool/dashboard
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+Here we have a simple website that will look up and return the weather and climate of a specific area. 
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+The motivaton behind this assignment is to create a webpage that is easy to use and functions as expected. I learned how to get specific inforation from API indexes from creating this site.
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-
-## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+The user will type in the city in the input box, click search and the temperature, wind speed and humidity will be given to them along with the 5 day day weather report for that city. To clear the results and search for a new city the User must press Clear Search Cities to return a new result.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-Link to deployed git Hub page
+
 
 <a href="https://asiabeoon.github.io/My-Code-Generator/">Deployed My Code Generator page</a>
 
@@ -150,38 +134,3 @@ You are required to submit BOTH of the following for review:
 
 ![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
 
-        <nav class="navbar navbar-expand-lg navbar-light" 
-    style="background-color:rgb(188, 229, 225);">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
-          <!-- <span class="navbar-toggler-icon"></span> -->
-        <!-- </button> -->
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-        </div>
-    </nav>

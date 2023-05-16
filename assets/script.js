@@ -20,20 +20,16 @@ fetch(url)
 .then(function (data){
 // console.log(data, "hey!")
 	var heading =document.createElement ('h2')
-	heading.textContent=` ${data.name} ${dayjs().format("M/D/YYYY")}` 
+	heading.textContent=`${data.name} ${dayjs().format("M/D/YYYY")}` 
 	forecastEL.appendChild(heading)
-
-
-// var iconAPI = `http://openweathermap.org/img/w/${list.data.weather[0].icon}.png`	
-// imageIcon .innerHTML+=`
-// <img src="http://openweathermap.org/img/w/${iconforecast[i].weather[0].icon}.png" />`
-// }
 
 // *************Working on putting image in the todays forecast div = var imageIcon = document.getElementById("image-icon")
 
-// imageIconURL =`
-// <img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png" />`
-// imageIcon.appendChild(icon)
+	// var iconCode = data.weather[0].icon
+	// var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+	// $(".icon").html("<img src='" + iconUrl  + "'>");
+	// imageIcon.append(icon)
+
 
 	var temp = document.createElement("ul")
 	temp.textContent = "Temp: " + data.main.temp + " ° F"
@@ -107,16 +103,12 @@ clearButton.addEventListener('click', function() {
 	deleteItems();
 })
 
-// modify button
-// <button onclick="deleteItems()">Delete items</button>
-
-// append button
 function deleteItems() {
 	//sessionStorage.clear();
 	localStorage.removeItem('cities');
 	// localStorage.clear();
   }
-// call buttonn
+// call button
 
 // var lat= 41.85;
 // var lon= -87.65;
@@ -175,33 +167,6 @@ function fiveDayFetch(lat,lon) {
 	}
 
 
-/*
-	for (var i=0; i<data.list.length;i+=8) {
-		console.log(data.list[i])
-		var date = data.list[i].dt_txt.split(" ")[0] ;
-*/
-
-	//*** */ const iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-
-	// const iconImg = document.createElement('img');
-	// iconImg.src = iconUrl;
-	// document.body.appendChild(iconImg);
- 
-	/*
-	fiveDayContainer.innerHTML+=`
-		<div> 
-        	<h4 id="dateTwo">${date}</h4>
-			<img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png" />
-        	<ul>
-            Temp: ${data.list[i].main.temp}
-            Wind: ${data.list[i].wind.speed}
-            Humidity: ${data.list[i].main.humidity}%
-
-        	</ul>
-    	</div>
-		`
-	}
-	*/
 	
 	});
 }
